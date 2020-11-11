@@ -67,7 +67,7 @@ export function storyPagesCount(story) {
         );
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.GUIDANCE,
-      storyId: story.storyId,
+      storyId: story.id,
       message,
     };
   }
@@ -86,7 +86,7 @@ export function storyTitleLength(story) {
   if (story.title.length > MAX_STORY_TITLE_LENGTH) {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.GUIDANCE,
-      storyId: story.storyId,
+      storyId: story.id,
       message: sprintf(
         /* translators: %d: maximum story title length. */
         __('Story title is longer than %d characters', 'web-stories'),

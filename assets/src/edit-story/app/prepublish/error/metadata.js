@@ -49,7 +49,7 @@ export function storyCoverAttached(story) {
   if (typeof story?.featuredMedia?.url !== 'string') {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.ERROR,
-      storyId: story.storyId,
+      storyId: story.id,
       message: __('Missing story cover', 'web-stories'),
     };
   }
@@ -68,7 +68,7 @@ export function storyTitle(story) {
   if (typeof story.title !== 'string' || story.title.trim() === '') {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.ERROR,
-      storyId: story.storyId,
+      storyId: story.id,
       message: __('Missing story title', 'web-stories'),
     };
   }
@@ -90,7 +90,7 @@ export function storyCoverPortraitSize(story) {
   ) {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.ERROR,
-      storyId: story.storyId,
+      storyId: story.id,
       message: __("Story's portrait cover image is too small", 'web-stories'),
     };
   }
@@ -112,7 +112,7 @@ export function publisherLogoSize(story) {
   ) {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.ERROR,
-      storyId: story.storyId,
+      storyId: story.id,
       message: __("Story's publisher logo image is too small", 'web-stories'),
     };
   }
@@ -149,7 +149,7 @@ export function linkInPageAttachmentRegion(story) {
   if (isLinkInPageAttachmentArea) {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.ERROR,
-      storyId: story.storyId,
+      storyId: story.id,
       pages: pagesWithLinksInAttachmentArea,
       message: __(
         'Page has a link in the page attachment region',
