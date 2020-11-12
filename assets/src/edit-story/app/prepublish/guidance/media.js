@@ -136,11 +136,11 @@ export function mediaElementResolution(element) {
 
 function videoElementResolution(element) {
   const videoResolutionLow =
-    element.resource.sizes.full.height <= MIN_VIDEO_HEIGHT &&
-    element.resource.sizes.full.width <= MIN_VIDEO_WIDTH;
+    element.resource?.sizes?.full?.height <= MIN_VIDEO_HEIGHT &&
+    element.resource?.sizes?.full?.width <= MIN_VIDEO_WIDTH;
   const videoResolutionHigh =
-    element.resource.sizes.full.height >= MAX_VIDEO_HEIGHT &&
-    element.resource.sizes.full.width >= MAX_VIDEO_WIDTH;
+    element.resource?.sizes?.full?.height >= MAX_VIDEO_HEIGHT &&
+    element.resource?.sizes?.full?.width >= MAX_VIDEO_WIDTH;
 
   if (videoResolutionHigh) {
     return {
@@ -166,8 +166,9 @@ function videoElementResolution(element) {
 
 function imageElementResolution(element) {
   const heightResTooLow =
-    element.resource.sizes.full.height < 2 * element.height;
-  const widthResTooLow = element.resource.sizes.full.width < 2 * element.width;
+    element.resource?.sizes?.full?.height < 2 * element.height;
+  const widthResTooLow =
+    element.resource?.sizes?.full?.width < 2 * element.width;
 
   if (heightResTooLow || widthResTooLow) {
     return {
@@ -182,9 +183,9 @@ function imageElementResolution(element) {
 function gifElementResolution(element) {
   // gif/output uses the MP4 video provided by the 3P Media API for displaying gifs
   const heightResTooLow =
-    element.resource.output.sizes.mp4.full.height < 2 * element.height;
+    element.resource?.output?.sizes?.mp4?.full?.height < 2 * element.height;
   const widthResTooLow =
-    element.resource.output.sizes.mp4.full.width < 2 * element.width;
+    element.resource?.output?.sizes?.mp4?.full?.width < 2 * element.width;
 
   if (heightResTooLow || widthResTooLow) {
     return {
@@ -204,7 +205,7 @@ function gifElementResolution(element) {
  * @return {Guidance|undefined} The guidance object for consumption
  */
 export function videoElementLength(element) {
-  if (element.resource.length > MAX_VIDEO_LENGTH_SECONDS) {
+  if (element.resource?.length > MAX_VIDEO_LENGTH_SECONDS) {
     return {
       type: PRE_PUBLISH_MESSAGE_TYPES.GUIDANCE,
       elementId: element.id,
